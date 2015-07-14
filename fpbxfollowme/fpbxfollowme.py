@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """fpbxfollowme: module to update follow me field to add or remove my
 extension from support queue. requires python-xdg
 """
@@ -24,7 +25,7 @@ def update_grplist(br, ext):
 def get_grplist(br):
     br.select_form(FORM_N)
     control = br.form.find_control(CONTROL_N)
-    print("grplist set to: " + br[control.name])
+    print("grplist set to: \n" + br[control.name])
     return control
 
 
@@ -81,6 +82,7 @@ def main():
     update_grplist(br, ext_text)
     r = br.open(action_p)
     r.read()
+    print(">> after submit <<")
     get_grplist(br)
 
 main()
